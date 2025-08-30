@@ -10,7 +10,6 @@
       --gold2:#a86d2a;
       --gold3:#e3b34e;
       --gold4:#f7df7a;
-      --ring:#ffffff22;
     }
 
     *{box-sizing:border-box; margin:0; padding:0;}
@@ -25,6 +24,7 @@
 
     .container{
       width:100%; max-width:600px; text-align:center; position:relative; z-index:1;
+      padding: 20px;
     }
 
     @font-face{ font-family:'Boucherie Block'; src:url('Boucherie Block W05 Bold.ttf') format('truetype'); font-display:swap; }
@@ -59,30 +59,41 @@
     .icons img:hover,
     .google img:hover{ transform:scale(1.08); }
 
-    .cta{
-      font-family:'Authenia', cursive;
-      font-size:clamp(18px,3.2vw,24px);
+    .cta{      font-family:'Authenia', cursive;      font-size:clamp(22px,4vw,32px);
       margin:20px 0 25px;
     }
 
-    .google{
-      margin:20px 0;
-    }
+    .google{ margin:20px 0; }
 
     .phone{
-      margin:30px 0;
+      margin:40px 0 60px; /* más espacio para que no se monte sobre la corona */
     }
-    .phone a svg{
-      width:100%; max-width:560px; height:auto; display:block; margin:0 auto;
-    }
+    .phone a svg{      width:100%; max-width:560px; height:auto; display:block; margin:0 auto;      transition: transform .25s ease, filter .25s ease;    }
 
     .tagline{
       font-family:'Boucherie Block', Georgia, serif;
       font-size:clamp(14px,2.6vw,20px);
       text-transform:uppercase;
-      margin-top:20px;
+      margin-top:40px;
       text-align:right;
       padding-right:10px;
+    }
+    /* --- Motion effects (hover/tap) --- */
+    @keyframes pulsePop{0%{transform:scale(1) translateY(0)}50%{transform:scale(1.08) translateY(-2px)}100%{transform:scale(1) translateY(0)}}
+    @keyframes glow{0%{filter:drop-shadow(0 0 0 rgba(247,223,122,0))}50%{filter:drop-shadow(0 0 18px rgba(247,223,122,.6))}100%{filter:drop-shadow(0 0 0 rgba(247,223,122,0))}}
+
+    .icons a:hover img,
+    .icons a:active img,
+    .google a:hover img,
+    .google a:active img{ animation:pulsePop .6s ease-out; }
+
+    .phone a:hover svg,
+    .phone a:active svg{ transform:scale(1.03); animation:glow .8s ease-out; }
+
+    /* Respecto a accesibilidad: si el usuario prefiere menos animación */
+    @media (prefers-reduced-motion: reduce){
+      .icons a:hover img,.icons a:active img,.google a:hover img,.google a:active img{ animation:none }
+      .phone a:hover svg,.phone a:active svg{ animation:none; transform:none }
     }
   </style>
 </head>
