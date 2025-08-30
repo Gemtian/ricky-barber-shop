@@ -2,104 +2,130 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ricky Barber Shop — Links</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ricky Barber Shop</title>
   <style>
     :root{
-      --gold:#d9b45b;         /* oro principal */
-      --gold-deep:#8b6a2b;    /* sombra oro */
-      --ring:#ffffff22;       /* contorno sutil */
-      --soft-black:#0a0a0a;   /* fondo de botones */
+      --gold1:#6e3a12;
+      --gold2:#a86d2a;
+      --gold3:#e3b34e;
+      --gold4:#f7df7a;
+      --ring:#ffffff22;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
 
-    /* Fondo identico al mockup */
+    *{box-sizing:border-box; margin:0; padding:0;}
+    html,body{height:100%;}
+
     body{
-      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #000 url('fondo_ricky.png') center/cover no-repeat fixed;
+      font-family: Arial, sans-serif;
       color:#fff;
-      background: #000 url('fondo-ricky.png') center / cover no-repeat fixed;
-      display:flex; align-items:stretch; justify-content:center;
-    }
-    /* Vignette para legibilidad, sin alterar la imagen base */
-    body::before{ content:""; position:fixed; inset:0; pointer-events:none;
-      background: linear-gradient(to bottom, rgba(0,0,0,.75) 0%, rgba(0,0,0,.45) 40%, rgba(0,0,0,.55) 70%, rgba(0,0,0,.85) 100%);
+      display:flex; justify-content:center; align-items:center;
     }
 
-    .stage{ width:100%; max-width:640px; margin:auto; padding:24px 16px 28px; position:relative; z-index:1; }
+    .container{
+      width:100%; max-width:600px; text-align:center; position:relative; z-index:1;
+    }
 
-    /* LOGO superior grande */
-    .logo{ width:min(92%, 560px); display:block; margin: 6px auto 12px; height:auto;
-      filter: drop-shadow(0 10px 24px rgba(0,0,0,.5)); }
+    @font-face{ font-family:'Boucherie Block'; src:url('Boucherie Block W05 Bold.ttf') format('truetype'); font-display:swap; }
+    @font-face{ font-family:'Authenia'; src:url('Authenia.otf') format('opentype'); font-display:swap; }
 
-    /* Slogan superior */
-    .slogan{ text-align:center; margin: 2px 0 18px; font-size: clamp(14px, 2.8vw, 20px);
-      letter-spacing:.4px; text-transform: uppercase; color:#f1f1f1; text-shadow: 0 2px 8px rgba(0,0,0,.75); }
+    .logo{
+      width:90%; max-width:520px;
+      margin:0 auto 10px;
+      display:block;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,.6));
+    }
 
-    /* Fila de dos iconos (Instagram y TikTok) */
-    .icons-duo{ display:grid; grid-template-columns: 1fr 1fr; gap: min(8vw, 26px); align-items:center; justify-items:center; margin: 8px 0 10px; }
-    .round{ width:min(30vw, 140px); height:min(30vw, 140px); border-radius:999px; display:grid; place-items:center;
-      background: var(--soft-black); border:1px solid var(--ring); box-shadow: 0 16px 40px rgba(0,0,0,.45);
-      transition: transform .18s ease, box-shadow .18s ease; }
-    .round:hover{ transform: translateY(-4px) scale(1.03); box-shadow: 0 22px 56px rgba(0,0,0,.6); }
-    .round img{ width:70%; height:70%; object-fit:contain; display:block; }
+    .slogan{
+      font-family:'Boucherie Block', Georgia, serif;
+      font-size:clamp(16px, 3.5vw, 24px);
+      margin:10px 0 20px;
+      text-transform:uppercase;
+      text-shadow:0 3px 6px rgba(0,0,0,.7);
+    }
 
-    /* Llamado "Has click y síguenos" */
-    .cta{ text-align:center; font-style:italic; opacity:.95; margin: 6px 0 14px; font-size: clamp(14px, 2.6vw, 18px); }
+    .icons{
+      display:flex; justify-content:center; gap:30px;
+      margin:20px 0 10px;
+    }
+    .icons img{
+      width:100px; height:100px;
+      border-radius:50%;
+      box-shadow:0 8px 20px rgba(0,0,0,.5);
+      transition:transform .2s;
+    }
+    .icons img:hover{ transform:scale(1.08); }
 
-    /* Icono único (Google) centrado */
-    .single{ display:grid; place-items:center; margin: 2px 0 12px; }
-    .single .round{ width:min(28vw, 130px); height:min(28vw, 130px); }
+    .cta{
+      font-family:'Authenia', cursive;
+      font-size:clamp(18px,3.2vw,24px);
+      margin:14px 0 18px;
+    }
 
-    /* Teléfono grande, efecto oro y click-to-call */
-    .phone{ text-align:center; margin: 10px 0 12px; font-weight:900; letter-spacing:1px;
-      font-size: clamp(22px, 7vw, 40px); color: var(--gold);
-      text-shadow: 0 2px 0 var(--gold-deep), 0 10px 18px rgba(0,0,0,.6); }
-    .phone a{ color:inherit; text-decoration:none; }
+    .google{
+      margin:14px 0;
+    }
+    .google img{ width:100px; height:100px; border-radius:50%; box-shadow:0 8px 20px rgba(0,0,0,.5); }
 
-    /* Lema inferior */
-    .tagline{ text-align:center; margin: 6px 0 2px; font-size: clamp(12px, 2.4vw, 16px); letter-spacing:.6px; text-transform: uppercase; opacity:.95; }
+    .phone{
+      margin:20px 0;
+    }
+    .phone a svg{
+      width:100%; max-width:560px; height:auto; display:block; margin:0 auto;
+    }
 
-    /* Accesibilidad táctil */
-    a{ -webkit-tap-highlight-color: transparent; }
-
-    @media (max-width:380px){
-      .stage{ padding:18px 12px 22px; }
+    .tagline{
+      font-size:clamp(14px,2.6vw,18px);
+      text-transform:uppercase;
+      margin-top:14px;
     }
   </style>
 </head>
 <body>
-  <div class="stage">
-    <!-- Logo superior (idéntico a tu PSD) -->
-    <img class="logo" src="logo.png" alt="Ricky Barber Shop"/>
+  <div class="container">
+    <img src="logo.png" alt="Ricky Barber Shop" class="logo">
 
-    <!-- Slogan superior -->
     <p class="slogan">“TU MEJOR VERSIÓN EMPIEZA CON NOSOTROS”</p>
 
-    <!-- Dos iconos: Instagram y TikTok -->
-    <div class="icons-duo">
-      <a class="round" aria-label="Instagram" href="https://www.instagram.com/rickybarbershop123?utm_source=ig_web_button_share_sheet&igsh=eWNqeWpxdnQ4cDB0" target="_blank" rel="noopener noreferrer">
-        <img src="instagram-icon copy.png" alt="Instagram"/>
+    <div class="icons">
+      <a href="https://www.instagram.com/rickybarbershop123?utm_source=ig_web_button_share_sheet&igsh=eWNqeWpxdnQ4cDB0" target="_blank" rel="noopener noreferrer">
+        <img src="instagram_con.png" alt="Instagram">
       </a>
-      <a class="round" aria-label="TikTok" href="https://www.tiktok.com/@rickybarber89?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer">
-        <img src="tiktok-icon.png" alt="TikTok"/>
+      <a href="https://www.tiktok.com/@rickybarber89?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer">
+        <img src="tiktok_icon.png" alt="TikTok">
       </a>
     </div>
 
-    <!-- Texto medio -->
     <p class="cta">Has click! y Síguenos!!</p>
 
-    <!-- Icono único: Google (dirección y rating) -->
-    <div class="single">
-      <a class="round" aria-label="Google Maps — dirección y rating" href="https://www.google.com/maps/place/Ricky+Barber+Shop/@25.7684693,-80.3591736,3a,75y,90t/data=!3m8!1e2!3m6!1sCIABIhALzgNFTMV[...]">
-        <img src="google-icom.png" alt="Google Maps"/>
+    <div class="google">
+      <a href="https://maps.app.goo.gl/yrjqjNacwAgakBK86" target="_blank" rel="noopener noreferrer">
+        <img src="google_icom.png" alt="Google Maps">
       </a>
     </div>
 
-    <!-- Teléfono: click-to-call -->
-    <div class="phone"><a href="tel:+17862861650" aria-label="Llamar a Ricky Barber Shop">786-286-1650</a></div>
+    <div class="phone">
+      <a href="tel:+17862861650" aria-label="Llamar a Ricky Barber Shop">
+        <svg viewBox="0 0 1200 160" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="goldStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="var(--gold1)"/>
+              <stop offset="20%" stop-color="var(--gold2)"/>
+              <stop offset="50%" stop-color="var(--gold3)"/>
+              <stop offset="70%" stop-color="var(--gold4)"/>
+              <stop offset="100%" stop-color="var(--gold1)"/>
+            </linearGradient>
+          </defs>
+          <text x="50%" y="70%" text-anchor="middle"
+                fill="#ffffff" stroke="url(#goldStroke)" stroke-width="14" stroke-linejoin="round"
+                font-size="110" font-family="'Boucherie Block', Georgia, serif" font-weight="900">
+            786-286-1650
+          </text>
+        </svg>
+      </a>
+    </div>
 
-    <!-- Lema inferior -->
     <p class="tagline">“PRECISIÓN QUE DISTINGUE”</p>
   </div>
 </body>
