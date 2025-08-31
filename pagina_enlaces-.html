@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ricky Barber Shop</title>
+  <style>
+    :root{
+      --ring:#ffffff22;
+    }
+
+    *{box-sizing:border-box; margin:0; padding:0;}
+    html,body{height:100%;}
+
+    body{
+      background: #000 url('fondo_ricky.png') center/cover no-repeat fixed;
+      font-family: Arial, sans-serif;
+      color:#fff;
+      display:flex; justify-content:center; align-items:center;
+    }
+
+    .container{      width:100%; max-width:600px; text-align:center; position:relative; z-index:1;      padding: env(safe-area-inset-top, 16px) 16px env(safe-area-inset-bottom, 24px);    }
+
+    @font-face{ font-family:'Boucherie Block'; src:url('Boucherie Block W05 Bold.ttf') format('truetype'); font-display:swap; }
+    @font-face{ font-family:'Authenia'; src:url('Authenia.otf') format('opentype'); font-display:swap; }
+
+    .logo{      width:100%; max-width:568px;      margin:12px auto 18px;      display:block;      filter: drop-shadow(0 6px 16px rgba(0,0,0,.6));    }
+
+    .slogan{      font-family:'Boucherie Block', Georgia, serif;      font-size:clamp(18px, 4vw, 28px);      margin:12px auto 26px;      text-transform:uppercase;      text-shadow:0 3px 6px rgba(0,0,0,.7);      max-width:568px;      padding:0 4px;    }
+
+    .icons{
+      display:flex; justify-content:center; gap:20px;
+      margin:30px 0 15px;
+    }
+    .icons img,    .google img{      width:60px; height:60px;      border-radius:50%;      box-shadow:0 8px 20px rgba(0,0,0,.5);      transition:transform .3s ease-in-out;    }
+    .icons img:hover,
+    .google img:hover{ transform:scale(1.15) rotate(3deg); }
+
+    .cta{      font-family:'Authenia', cursive;      font-size:clamp(24px,4.5vw,34px);      margin:20px 0 25px;      text-shadow:0 3px 6px rgba(0,0,0,.6);    }
+
+    .google{
+      margin:20px 0;
+    }
+
+    .phone{      margin:18px 0;      animation: pulse 2s infinite;    }
+    .phone img{      width:85%; max-width:360px;    }
+
+    @keyframes pulse{
+      0%{ transform:scale(1); }
+      50%{ transform:scale(1.05); }
+      100%{ transform:scale(1); }
+    }
+
+    .crown{      width:95%; max-width:580px;      margin:18px auto 8px;      display:block;    }
+
+    .tagline{
+      font-family:'Boucherie Block', Georgia, serif;
+      font-size:clamp(14px,2.6vw,20px);
+      text-transform:uppercase;
+      margin-top:10px;
+      text-align:right;
+      padding-right:10px;
+    }
+  /* --- Responsive tweaks for small phones --- */
+    @media (max-width:430px){
+      .logo{ max-width: 600px; margin-top: 8px; }
+      .slogan{ font-size:clamp(18px,5.2vw,26px); }
+      .icons img, .google img{ width:56px; height:56px; }
+      .phone img{ max-width:320px; }
+      .container{ padding-top: calc(env(safe-area-inset-top, 12px) + 6px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="logo.png" alt="Ricky Barber Shop" class="logo">
+
+    <p class="slogan">“TU MEJOR VERSIÓN EMPIEZA CON NOSOTROS”</p>
+
+    <div class="icons">
+      <a href="https://www.instagram.com/rickybarbershop123?utm_source=ig_web_button_share_sheet&igsh=eWNqeWpxdnQ4cDB0" target="_blank" rel="noopener noreferrer">
+        <img src="instagram_con.png" alt="Instagram">
+      </a>
+      <a href="https://www.tiktok.com/@rickybarber89?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer">
+        <img src="tiktok_icon.png" alt="TikTok">
+      </a>
+    </div>
+
+    <p class="cta">Has click! y Síguenos!!</p>
+
+    <div class="google">
+      <a href="https://maps.app.goo.gl/yrjqjNacwAgakBK86" target="_blank" rel="noopener noreferrer">
+        <img src="google_icom.png" alt="Google Maps">
+      </a>
+    </div>
+
+    <div class="phone">
+      <a href="tel:+17862861650" aria-label="Llamar a Ricky Barber Shop">
+        <img src="phone_ricky.png" alt="786-286-1650">
+      </a>
+    </div>
+
+    <img src="crown_ricky.png" alt="Crown Decoration" class="crown">
+
+    <p class="tagline">“PRECISIÓN QUE DISTINGUE”</p>
+  </div>
+</body>
+</html>
