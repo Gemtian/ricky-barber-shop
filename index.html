@@ -2,81 +2,68 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ricky Barber Shop</title>
   <style>
-    :root{
-      --ring:#ffffff22;
-    }
-
-    *{box-sizing:border-box; margin:0; padding:0;}
-    html,body{height:100%;}
-
+    /* Lienzo fijo 1080 x 1920.3 */
+    :root{ --ring:#ffffff22; }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
     body{
-      background: #000 url('fondo_ricky.png') center/cover no-repeat fixed;
-      font-family: Arial, sans-serif;
-      color:#fff;
-      display:flex; justify-content:center; align-items:center;
+      background:#000 url('fondo_ricky.png') center/cover no-repeat fixed;
+      font-family: Arial, sans-serif; color:#fff; display:flex; align-items:center; justify-content:center;
     }
+    .stage{ width:1080px; height:1920.3px; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; padding:20px 30px; }
 
-    .container{      width:100%; max-width:600px; text-align:center; position:relative; z-index:1;      padding: env(safe-area-inset-top, 16px) 16px env(safe-area-inset-bottom, 24px);    }
-
+    /* Tipografías (opcional si las tienes en la carpeta) */
     @font-face{ font-family:'Boucherie Block'; src:url('Boucherie Block W05 Bold.ttf') format('truetype'); font-display:swap; }
     @font-face{ font-family:'Authenia'; src:url('Authenia.otf') format('opentype'); font-display:swap; }
 
-    .logo{      width:100%; max-width:568px;      margin:12px auto 18px;      display:block;      filter: drop-shadow(0 6px 16px rgba(0,0,0,.6));    }
+    /* LOGO: 1019 x 740 px */
+    .logo{ width:1019px; height:740px; object-fit:contain; display:block; margin:12px auto 10px; filter:drop-shadow(0 6px 16px rgba(0,0,0,.6)); }
 
-    .slogan{      font-family:'Boucherie Block', Georgia, serif;      font-size:clamp(18px, 4vw, 28px);      margin:12px auto 26px;      text-transform:uppercase;      text-shadow:0 3px 6px rgba(0,0,0,.7);      max-width:568px;      padding:0 4px;    }
+    /* SLOGAN: 12pt (≈16px) */
+    .slogan{ font-family:'Boucherie Block', Georgia, serif; font-size:12pt; line-height:1.2; text-transform:uppercase; text-shadow:0 3px 6px rgba(0,0,0,.7); margin:6px 0 18px; text-align:center; }
 
-    .icons{
-      display:flex; justify-content:center; gap:20px;
-      margin:30px 0 15px;
-    }
-    .icons img,    .google img{      width:60px; height:60px;      border-radius:50%;      box-shadow:0 8px 20px rgba(0,0,0,.5);      transition:transform .3s ease-in-out;    }
-    .icons img:hover,
-    .google img:hover{ transform:scale(1.15) rotate(3deg); }
+    /* ICONOS fila: cada uno 237 x 237 px */
+    .icons{ display:flex; gap:30px; align-items:center; justify-content:center; margin:18px 0 10px; }
+    .icons img{ width:237px; height:237px; border-radius:50%; box-shadow:0 8px 20px rgba(0,0,0,.5); transition:transform .25s ease; }
+    .icons img:hover{ transform:scale(1.06) }
 
-    .cta{      font-family:'Authenia', cursive;      font-size:clamp(24px,4.5vw,34px);      margin:20px 0 25px;      text-shadow:0 3px 6px rgba(0,0,0,.6);    }
+    /* CTA "Has click y síguenos": caja 600.73 x 97.89 px */
+    .cta-wrap{ width:600.73px; height:97.89px; display:flex; align-items:center; justify-content:center; margin:16px auto; }
+    .cta{ font-family:'Authenia', cursive; font-size:48px; text-shadow:0 3px 6px rgba(0,0,0,.6); }
 
-    .google{
-      margin:20px 0;
-    }
+    /* Google icono único 237 x 237 px */
+    .google{ margin:10px 0 12px; }
+    .google img{ width:237px; height:237px; border-radius:50%; box-shadow:0 8px 20px rgba(0,0,0,.5); transition:transform .25s ease; }
+    .google img:hover{ transform:scale(1.06) }
 
-    .phone{      margin:18px 0;      animation: pulse 2s infinite;    }
-    .phone img{      width:85%; max-width:360px;    }
+    /* PHONE imagen: 562.91 x 106.72 px (click-to-call) */
+    .phone{ margin:12px 0; display:flex; align-items:center; justify-content:center; }
+    .phone img{ width:562.91px; height:106.72px; object-fit:contain; animation:pulse 2s infinite; }
+    @keyframes pulse{ 0%{transform:scale(1)} 50%{transform:scale(1.03)} 100%{transform:scale(1)} }
 
-    @keyframes pulse{
-      0%{ transform:scale(1); }
-      50%{ transform:scale(1.05); }
-      100%{ transform:scale(1); }
-    }
+    /* CROWN: 999 x 221 px */
+    .crown{ width:999px; height:221px; object-fit:contain; display:block; margin:12px auto 6px; }
 
-    .crown{      width:95%; max-width:580px;      margin:18px auto 8px;      display:block;    }
+    /* PRECISIÓN: caja 221 x 63.10 px, alineado a la derecha */
+    .precision{ width:221px; height:63.1px; display:flex; align-items:center; justify-content:flex-end; margin-left:auto; padding-right:6px; }
+    .precision span{ font-family:'Boucherie Block', Georgia, serif; font-size:20px; letter-spacing:.6px; text-transform:uppercase; }
 
-    .tagline{
-      font-family:'Boucherie Block', Georgia, serif;
-      font-size:clamp(14px,2.6vw,20px);
-      text-transform:uppercase;
-      margin-top:10px;
-      text-align:right;
-      padding-right:10px;
-    }
-  /* --- Responsive tweaks for small phones --- */
-    @media (max-width:430px){
-      .logo{ max-width: 600px; margin-top: 8px; }
-      .slogan{ font-size:clamp(18px,5.2vw,26px); }
-      .icons img, .google img{ width:56px; height:56px; }
-      .phone img{ max-width:320px; }
-      .container{ padding-top: calc(env(safe-area-inset-top, 12px) + 6px); }
-    }
+    /* Evitar overflow vertical inesperado */
+    .stage > *{ flex-shrink:0 }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="stage">
+    <!-- LOGO 1019 x 740 -->
     <img src="logo.png" alt="Ricky Barber Shop" class="logo">
 
+    <!-- SLOGAN 12pt -->
     <p class="slogan">“TU MEJOR VERSIÓN EMPIEZA CON NOSOTROS”</p>
 
+    <!-- ICONOS 237 x 237 (Instagram + TikTok) -->
     <div class="icons">
       <a href="https://www.instagram.com/rickybarbershop123?utm_source=ig_web_button_share_sheet&igsh=eWNqeWpxdnQ4cDB0" target="_blank" rel="noopener noreferrer">
         <img src="instagram_con.png" alt="Instagram">
@@ -86,23 +73,30 @@
       </a>
     </div>
 
-    <p class="cta">Has click! y Síguenos!!</p>
+    <!-- CTA caja 600.73 x 97.89 -->
+    <div class="cta-wrap">
+      <p class="cta">Has click! y Síguenos!!</p>
+    </div>
 
+    <!-- GOOGLE icono 237 x 237 -->
     <div class="google">
       <a href="https://maps.app.goo.gl/yrjqjNacwAgakBK86" target="_blank" rel="noopener noreferrer">
         <img src="google_icom.png" alt="Google Maps">
       </a>
     </div>
 
+    <!-- PHONE 562.91 x 106.72 (click-to-call) -->
     <div class="phone">
       <a href="tel:+17862861650" aria-label="Llamar a Ricky Barber Shop">
         <img src="phone_ricky.png" alt="786-286-1650">
       </a>
     </div>
 
+    <!-- CROWN 999 x 221 -->
     <img src="crown_ricky.png" alt="Crown Decoration" class="crown">
 
-    <p class="tagline">“PRECISIÓN QUE DISTINGUE”</p>
+    <!-- PRECISIÓN caja 221 x 63.1 -->
+    <div class="precision"><span>“PRECISIÓN QUE DISTINGUE”</span></div>
   </div>
 </body>
 </html>
