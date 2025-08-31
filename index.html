@@ -1,84 +1,58 @@
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>index</title>
   <style>
-    /* ===============================
-       RICKY BARBERSHOP — MOBILE PERFECT (index.html)
-       Reproduce el Screenshot en 9:16 exacto para teléfonos
-       Archivos requeridos (mismos nombres):
-       - fondo-ricky.png  - logo.png
-       - icon-instagram.png  - icon-google.png  - icon-tiktok.png
-       - phone_ricky.png  - crown_ricky.png
-       - Boucherie Block W05 Bold.ttf  - Authenia.otf
-       =============================== */
-
-    :root{ --ring:#ffffff22; }
-    *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-    html,body{ height:100%; }
-    html{ -webkit-text-size-adjust:100%; }
-    body{ margin:0; background:#000; color:#fff; display:grid; place-items:center; font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; }
-
-    /* LIENZO 9:16 que mantiene proporciones en cualquier móvil */
-    .canvas{ position:relative; width:100vw; max-width:480px; aspect-ratio:9/16; overflow:hidden; border-radius:12px; }
-
-    /* Fondo */
-    .bg{ position:absolute; inset:0; background: center 60% / cover no-repeat url('fondo-ricky.png'); }
-    .vignette{ position:absolute; inset:0; pointer-events:none; background: radial-gradient(110% 72% at 50% 10%, rgba(0,0,0,.18), rgba(0,0,0,.65)); }
-
-    /* Preloads para evitar íconos faltantes en iOS */
-    @supports (aspect-ratio: 1 / 1) {
-      :root{
-        --preload1: url('icon-instagram.png');
-        --preload2: url('icon-google.png');
-        --preload3: url('icon-tiktok.png');
-      }
-      .preload{ position:absolute; width:0; height:0; overflow:hidden; background-image: var(--preload1), var(--preload2), var(--preload3); }
+    /* ===== Ricky Barber Shop — Layout 9:16 EXACT MATCH =====
+       Usa TUS PNG exactamente donde los pusiste en el canvas.
+       Solo cambia los valores en :root para micro‑ajustes (%) si hace falta. */
+    :root{
+      /* Offsets (en % de la altura del lienzo) y anchos (en % del ancho del lienzo) */
+      --logo-top: 9.5%;     --logo-w: 86%;
+      --s1-top:  36.5%;     --s1-w:  82%;   /* “Tu mejor versión…” (slogan_p.png) */
+      --icons-top: 55.5%;   --icon-size: 22%;  --icons-gap: 6.5%;
+      --cta-top:  66.8%;    --cta-w:  60%;    /* “Has click…” está integrado en la obra de fondo si usas texto imagen; si no, ocúltalo */
+      --phone-top: 73.6%;   --phone-w: 56%;
+      --crown-top: 87.6%;   --crown-w: 92%;
+      --s2-bottom: 2.2%;    --s2-w: 84%;     /* “Precisión que distingue” (slogan_v.png) */
     }
 
-    /* Cargar fuentes exactas */
-    @font-face{ font-family:'BoucherieBlock'; src:url('Boucherie Block W05 Bold.ttf') format('truetype'); font-display:swap; }
-    @font-face{ font-family:'Authenia'; src:url('Authenia.otf') format('opentype'); font-display:swap; }
+    *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+    html,body{height:100%}
+    body{margin:0; background:#000; color:#fff; display:grid; place-items:center}
 
-    /* Utilidad de posicionamiento por porcentaje del lienzo */
+    /* Lienzo 9:16 que se escala perfecto en móviles */
+    .canvas{ position:relative; width:100vw; max-width:480px; aspect-ratio:9/16; overflow:hidden; }
+
+    /* Fondo */
+    .bg{ position:absolute; inset:0; background: center 62% / cover no-repeat url('fondo-ricky.png'); }
+    .shade{ position:absolute; inset:0; background: radial-gradient(110% 72% at 50% 10%, rgba(0,0,0,.18), rgba(0,0,0,.72)); pointer-events:none; }
+
     .abs{ position:absolute; left:50%; transform:translateX(-50%); }
 
-    /* LOGO grande superior (ligeramente más abajo para evitar notch recorte) */
-    .logo{ top:7.8%; width:96%; filter: drop-shadow(0 10px 26px rgba(0,0,0,.55)); height:auto; }
+    /* Elementos posicionados por % (idénticos al mockup) */
+    .logo{   top:var(--logo-top);   width:var(--logo-w);   height:auto; }
+    .s1{     top:var(--s1-top);     width:var(--s1-w);     height:auto; }
 
-    /* SLOGAN — una sola línea, ancho proporcional al logo (no romper en 2) */
-    .slogan{ top:40.5%; width:82%; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-family:'BoucherieBlock', Georgia, serif; font-weight:700; letter-spacing:.04em; text-shadow:0 2px 8px rgba(0,0,0,.8); font-size: clamp(14px, 3vw, 19px); }
+    .icons{  top:var(--icons-top);  width:100%; display:flex; justify-content:center; align-items:center; gap:var(--icons-gap); }
+    .icon-btn{ width:var(--icon-size); aspect-ratio:1/1; border-radius:999px; display:grid; place-items:center; background:#111; border:1px solid #ffffff22; box-shadow:0 16px 40px rgba(0,0,0,.45); animation:bob 3.6s ease-in-out infinite; }
+    .icon-btn:nth-child(2){ animation-delay:.25s } .icon-btn:nth-child(3){ animation-delay:.5s }
+    .icon{ width:72%; height:72%; object-fit:contain; display:block }
+    @keyframes bob{0%{transform:translateY(0)}50%{transform:translateY(-6%)}100%{transform:translateY(0)}}
+    @media (prefers-reduced-motion:reduce){ .icon-btn{animation:none} }
 
-    /* FILA DE ICONOS: mismo orden y tamaño relativo del mockup */
-    .icons{ top:50.5%; width:88%; display:flex; justify-content:center; align-items:center; gap:6%; }
-    .icon-btn{ width:23.5%; aspect-ratio:1/1; border-radius:999px; display:grid; place-items:center; background:#111; border:1px solid var(--ring); box-shadow:0 16px 40px rgba(0,0,0,.45); transition:transform .18s ease, box-shadow .18s ease; }
-    .icon{ width:72%; height:72%; object-fit:contain; display:block; }
+    .cta{    top:var(--cta-top);    width:var(--cta-w); text-align:center; font-style:italic; opacity:.95; display:none }
 
-    /* Movimiento sutil (bobbing) */
-    @keyframes bob{ 0%{transform:translateY(0)} 50%{transform:translateY(-6%)} 100%{transform:translateY(0)} }
-    .icon-btn:nth-child(1){ animation:bob 3.6s ease-in-out infinite .1s }
-    .icon-btn:nth-child(2){ animation:bob 3.6s ease-in-out infinite .4s }
-    .icon-btn:nth-child(3){ animation:bob 3.6s ease-in-out infinite .7s }
-    .icon-btn:active{ transform:translateY(1px) scale(.98) }
-    @media (prefers-reduced-motion:reduce){ .icon-btn{ animation:none } }
+    .phone{  top:var(--phone-top);  width:var(--phone-w); }
+    .phone a{ display:block }
+    .phone img{ width:100%; height:auto; display:block; animation:pulse 2.4s ease-in-out infinite }
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.035)}100%{transform:scale(1)}}
 
-    /* CTA: "Has click! y Síguenos!!" con Authenia */
-    .cta{ top:59.6%; width:62%; text-align:center; font-family:'Authenia', cursive; font-size: clamp(22px, 4.4vw, 30px); font-style:italic; text-shadow:0 3px 6px rgba(0,0,0,.6); }
+    .crown{  top:var(--crown-top);  width:var(--crown-w); height:auto }
 
-    /* TELÉFONO con botón y pulso; tap-to-call */
-    .phone{ top:67.8%; width:54%; text-align:center; filter: drop-shadow(0 10px 20px rgba(0,0,0,.45)); }
-    .phone a{ display:block; }
-    .phone img{ width:100%; height:auto; display:block; animation:pulse 2.4s ease-in-out infinite; }
-    @keyframes pulse{ 0%{transform:scale(1)} 50%{transform:scale(1.04)} 100%{transform:scale(1)} }
-
-    /* Corona decorativa */
-    .crown{ top:82.8%; width:92.6%; height:auto; filter: drop-shadow(0 8px 18px rgba(0,0,0,.6)); }
-
-    /* PRECISIÓN — Boucherie Block, una línea y centrado inferior */
-    .precision{ bottom:1.6%; width:100%; text-align:center; font-family:'BoucherieBlock', Georgia, serif; font-weight:800; text-transform:uppercase; letter-spacing:.06em; font-size: clamp(12px, 2.4vw, 16px); }
+    .s2{     position:absolute; left:50%; transform:translateX(-50%); bottom:var(--s2-bottom); width:var(--s2-w); height:auto }
 
     a:focus-visible{ outline:2px solid #eab308; outline-offset:3px; border-radius:12px }
   </style>
@@ -86,20 +60,20 @@
 <body>
   <main class="canvas" role="main" aria-label="Ricky Barber Shop — Social Links (Mobile)">
     <div class="bg"></div>
-    <div class="vignette"></div>
+    <div class="shade"></div>
 
-    <!-- LOGO -->
+    <!-- Logo centrado -->
     <img class="abs logo" src="logo.png" alt="Ricky Barber Shop" />
 
-    <!-- SLOGAN (Boucherie Block) en UNA sola línea -->
-    <p class="abs slogan">“TU MEJOR VERSIÓN EMPIEZA CON NOSOTROS”</p>
+    <!-- Slogan principal en UNA sola línea (como imagen para 100% fidelidad) -->
+    <img class="abs s1" src="slogan_p.png" alt="Tu mejor versión empieza con nosotros" />
 
-    <!-- ICONOS (Instagram · Google · TikTok) con micro-movimiento -->
+    <!-- Fila de iconos: Instagram · Google · TikTok -->
     <div class="abs icons">
       <a class="icon-btn" href="https://www.instagram.com/rickybarbershop123?utm_source=ig_web_button_share_sheet&igsh=eWNqeWpxdnQ4cDB0" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
         <img class="icon" src="icon-instagram.png" alt="Instagram"/>
       </a>
-      <a class="icon-btn" href="https://maps.app.goo.gl/yrjqjNacwAgakBK86" target="_blank" rel="noopener noreferrer" aria-label="Google Maps: dirección y rating">
+      <a class="icon-btn" href="https://www.google.com/maps/place/Ricky+Barber+Shop/@25.7684693,-80.3591736,3a,75y,90t/data=!3m8!1e2!3m6!1sCIABIhALzgNFTMVAK1LUJNDiom7E!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAC9h4nrKFZmnyoTnF20j6dunYRt4QA4pfpI3N9tCCGFEJVlcN80TLDX7_1bCV6vUI0hjrKXuE0bisaxKciUwDoSIgcKMoV1UEbPC_lJkW3cxHZYUD-V5X-D_aARBHO5TSC8pyurOowqQOSV4_rMR%3Dw529-h298-k-no!7i4000!8i2252!4m9!3m8!1s0x88d9b929ce2c6fe9:0xddaaaa03f08ea5db!8m2!3d25.7684693!4d-80.3591736!10e5!14m1!1BCgIgARICGAI!16s%2Fg%2F11f11mb3v5?hl=es-US&entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" aria-label="Google Maps">
         <img class="icon" src="icon-google.png" alt="Google Maps"/>
       </a>
       <a class="icon-btn" href="https://www.tiktok.com/@rickybarber89?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
@@ -107,10 +81,10 @@
       </a>
     </div>
 
-    <!-- CTA (Authenia) -->
+    <!-- CTA (si quisieras texto en lugar de imagen, muestra este párrafo) -->
     <p class="abs cta">Has click! y Síguenos!!</p>
 
-    <!-- TELÉFONO (tap-to-call) con imagen y pulso -->
+    <!-- Teléfono (tap-to-call) con imagen exacta -->
     <div class="abs phone">
       <a href="tel:+17862861650" aria-label="Llamar a Ricky Barber Shop">
         <img src="phone_ricky.png" alt="786-286-1650" />
@@ -120,8 +94,8 @@
     <!-- Corona -->
     <img class="abs crown" src="crown_ricky.png" alt="Decoración corona" />
 
-    <!-- Frase inferior (Boucherie Block) -->
-    <p class="precision">“PRECISIÓN QUE DISTINGUE”</p>
+    <!-- “Precisión que distingue” como imagen para fidelidad total -->
+    <img class="s2" src="slogan_v.png" alt="Precisión que distingue" />
   </main>
 </body>
 </html>
