@@ -6,10 +6,7 @@
   <title>Ricky Barber Shop</title>
   <style>
     :root{
-      --gold1:#6e3a12;
-      --gold2:#a86d2a;
-      --gold3:#e3b34e;
-      --gold4:#f7df7a;
+      --ring:#ffffff22;
     }
 
     *{box-sizing:border-box; margin:0; padding:0;}
@@ -24,7 +21,6 @@
 
     .container{
       width:100%; max-width:600px; text-align:center; position:relative; z-index:1;
-      padding: 20px;
     }
 
     @font-face{ font-family:'Boucherie Block'; src:url('Boucherie Block W05 Bold.ttf') format('truetype'); font-display:swap; }
@@ -54,46 +50,49 @@
       width:70px; height:70px;
       border-radius:50%;
       box-shadow:0 8px 20px rgba(0,0,0,.5);
-      transition:transform .2s;
+      transition:transform .3s ease-in-out;
     }
     .icons img:hover,
-    .google img:hover{ transform:scale(1.08); }
+    .google img:hover{ transform:scale(1.15) rotate(3deg); }
 
-    .cta{      font-family:'Authenia', cursive;      font-size:clamp(22px,4vw,32px);
+    .cta{
+      font-family:'Authenia', cursive;
+      font-size:clamp(22px,3.5vw,28px);
       margin:20px 0 25px;
+      text-shadow:0 3px 6px rgba(0,0,0,.6);
     }
 
-    .google{ margin:20px 0; }
+    .google{
+      margin:20px 0;
+    }
 
     .phone{
-      margin:40px 0 60px; /* más espacio para que no se monte sobre la corona */
+      margin:20px 0;
+      animation: pulse 2s infinite;
     }
-    .phone a svg{      width:100%; max-width:560px; height:auto; display:block; margin:0 auto;      transition: transform .25s ease, filter .25s ease;    }
+    .phone img{
+      width:90%; max-width:500px;
+    }
+
+    @keyframes pulse{
+      0%{ transform:scale(1); }
+      50%{ transform:scale(1.05); }
+      100%{ transform:scale(1); }
+    }
+
+    .crown{
+      width:95%; max-width:580px;
+      margin:20px auto 10px;
+      display:block;
+    }
 
     .tagline{
       font-family:'Boucherie Block', Georgia, serif;
       font-size:clamp(14px,2.6vw,20px);
       text-transform:uppercase;
-      margin-top:40px;
+      margin-top:10px;
       text-align:right;
       padding-right:10px;
-    }
-    /* --- Motion effects (hover/tap) --- */
-    @keyframes pulsePop{0%{transform:scale(1) translateY(0)}50%{transform:scale(1.08) translateY(-2px)}100%{transform:scale(1) translateY(0)}}
-    @keyframes glow{0%{filter:drop-shadow(0 0 0 rgba(247,223,122,0))}50%{filter:drop-shadow(0 0 18px rgba(247,223,122,.6))}100%{filter:drop-shadow(0 0 0 rgba(247,223,122,0))}}
-
-    .icons a:hover img,
-    .icons a:active img,
-    .google a:hover img,
-    .google a:active img{ animation:pulsePop .6s ease-out; }
-
-    .phone a:hover svg,
-    .phone a:active svg{ transform:scale(1.03); animation:glow .8s ease-out; }
-
-    /* Respecto a accesibilidad: si el usuario prefiere menos animación */
-    @media (prefers-reduced-motion: reduce){
-      .icons a:hover img,.icons a:active img,.google a:hover img,.google a:active img{ animation:none }
-      .phone a:hover svg,.phone a:active svg{ animation:none; transform:none }
     }
   </style>
 </head>
@@ -122,24 +121,11 @@
 
     <div class="phone">
       <a href="tel:+17862861650" aria-label="Llamar a Ricky Barber Shop">
-        <svg viewBox="0 0 1200 160" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="goldStroke" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="var(--gold1)"/>
-              <stop offset="20%" stop-color="var(--gold2)"/>
-              <stop offset="50%" stop-color="var(--gold3)"/>
-              <stop offset="70%" stop-color="var(--gold4)"/>
-              <stop offset="100%" stop-color="var(--gold1)"/>
-            </linearGradient>
-          </defs>
-          <text x="50%" y="70%" text-anchor="middle"
-                fill="#ffffff" stroke="url(#goldStroke)" stroke-width="6" stroke-linejoin="round"
-                font-size="110" font-family="'Boucherie Block', Georgia, serif" font-weight="900">
-            786-286-1650
-          </text>
-        </svg>
+        <img src="phone_ricky.png" alt="786-286-1650">
       </a>
     </div>
+
+    <img src="crown_ricky.png" alt="Crown Decoration" class="crown">
 
     <p class="tagline">“PRECISIÓN QUE DISTINGUE”</p>
   </div>
