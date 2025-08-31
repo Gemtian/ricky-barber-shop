@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ricky Barber Shop</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('fondo-ricky.png') no-repeat center center fixed;
+      background-size: cover;
+      text-align: center;
+      color: white;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      gap: 18px; /* controla separación entre secciones */
+      padding-top: 20px;
+    }
+
+    .logo {
+      width: 90%;
+      max-width: 500px;
+    }
+
+    .slogan {
+      width: 85%;
+      max-width: 600px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .social-icons a img {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      object-fit: cover;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+
+    .social-icons a img:hover {
+      transform: scale(1.2);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    .click {
+      width: 70%;
+      max-width: 600px;
+      margin-top: 5px;
+    }
+
+    .phone {
+      width: 80%;
+      max-width: 500px;
+      margin-top: 5px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .crown {
+      width: 95%;
+      max-width: 700px;
+      margin-top: 10px;
+    }
+
+    .slogan-bottom {
+      width: 75%;
+      max-width: 600px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Logo -->
+    <img src="logo.png" alt="Ricky Barber Shop Logo" class="logo">
+
+    <!-- Primer slogan -->
+    <img src="slogan_v.png" alt="Tu mejor versión empieza con nosotros" class="slogan">
+
+    <!-- Iconos sociales -->
+    <div class="social-icons">
+      <a href="https://www.instagram.com/rickybarbershop123" target="_blank">
+        <img src="icon-instagram.png" alt="Instagram">
+      </a>
+      <a href="https://maps.app.goo.gl/yrjqjNacwAgakBK86" target="_blank">
+        <img src="icon-google.png" alt="Google Maps">
+      </a>
+      <a href="https://www.tiktok.com/@rickybarber89" target="_blank">
+        <img src="icon-tiktok.png" alt="TikTok">
+      </a>
+    </div>
+
+    <!-- Has click -->
+    <img src="click.png" alt="Has click y síguenos" class="click">
+
+    <!-- Teléfono -->
+    <a href="tel:+17862861650">
+      <img src="phone_ricky.png" alt="786-286-1650" class="phone">
+    </a>
+
+    <!-- Decoración -->
+    <img src="crown_ricky.png" alt="Decoración" class="crown">
+
+    <!-- Segundo slogan -->
+    <img src="slogan_p.png" alt="Precisión que distingue" class="slogan-bottom">
+
+  </div>
+</body>
+</html>
